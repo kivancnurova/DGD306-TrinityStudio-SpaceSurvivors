@@ -130,7 +130,7 @@ MonoBehaviour:
   moveSpeed: 5
   bulletPrefab: {fileID: 4328558659638032358, guid: 20c572f8109677c43b193dd0f4d6f450, type: 3}
   firePoint: {fileID: 1838150189031105797}
-  fireRate: 0.5
+  fireRate: 1
   health: 100
 --- !u!60 &689839512150043984
 PolygonCollider2D:

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicEnemy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     public float health = 30f;
     public GameObject bulletPrefab;

@@ -22,7 +22,7 @@ public class BasicBullet : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            BasicEnemy enemy = collision.GetComponent<BasicEnemy>();
+            Enemy enemy = collision.GetComponent<Enemy>();
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);
