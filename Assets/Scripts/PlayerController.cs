@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Movement")]
     public float moveSpeed = 5f;
     private Rigidbody2D rb;
 
-    [Header("Shooting")]
     public GameObject bulletPrefab;
     public Transform firePoint;
     public float fireRate = 0.5f;
     private float fireTimer;
+
+    public float health = 100f;
 
     Vector2 movement;
 
@@ -30,7 +30,10 @@ public class PlayerController : MonoBehaviour
         fireTimer -= Time.deltaTime;
         if (fireTimer <= 0f)
         {
-            Shoot();
+            if (bulletPrefab != null && firePoint != null)
+            {
+                Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            }
             fireTimer = fireRate;
         }
     }
@@ -40,11 +43,13 @@ public class PlayerController : MonoBehaviour
         rb.velocity = movement.normalized * moveSpeed;
     }
 
-    void Shoot()
+    public void TakeDamage(float damage)
     {
-        if (bulletPrefab != null && firePoint != null)
+        health -= damage;
+        Debug.Log("Player took damage: " + damage + ", remaining health: " + health);
+        if (health <= 0f)
         {
-            Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            Destroy(gameObject);
         }
     }
 }
