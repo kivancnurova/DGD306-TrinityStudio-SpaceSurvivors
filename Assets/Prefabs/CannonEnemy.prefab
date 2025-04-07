@@ -210,3 +210,4 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8591429187568804703, guid: 5640e5aad0110bf4196672e14e8ca4b5, type: 3}
   firePoint: {fileID: 8768110016379883187}
   fireRate: 1.5
+  expWorth: 100

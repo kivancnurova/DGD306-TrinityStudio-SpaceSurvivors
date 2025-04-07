@@ -14,6 +14,11 @@ public class PlayerController : MonoBehaviour
 
     public float health = 100f;
 
+    [Header("Experience")]
+    public float exp = 0f;
+    public int level = 1;
+    public float expToLevelUp = 100f;
+
     Vector2 movement;
 
     void Start()
@@ -50,6 +55,17 @@ public class PlayerController : MonoBehaviour
         if (health <= 0f)
         {
             Destroy(gameObject);
+        }
+    }
+
+    public void AddExp(float amount)
+    {
+        exp += amount;
+        if (exp >= expToLevelUp)
+        {
+            exp -= expToLevelUp;
+            level++;
+            expToLevelUp *= 1.2f; // seviye başına daha fazla exp gereksinimi
         }
     }
 }
