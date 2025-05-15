@@ -80,9 +80,8 @@ MonoBehaviour:
   firePoint: {fileID: 1838150189031105797}
   fireRate: 1
   health: 100
-  exp: 0
-  level: 1
-  expToLevelUp: 100
+  score: 0
+  scoreText: {fileID: 0}
 --- !u!61 &848369986612438854
 BoxCollider2D:
   m_ObjectHideFlags: 0
