@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public Transform firePoint;
     public float fireRate = 1.5f;
     private float timer;
-    public float expWorth = 50f;
+    public float scoreWorth = 50f;
 
     void Update()
     {
@@ -30,12 +30,12 @@ public class Enemy : MonoBehaviour
         Debug.Log("Enemy took damage: " + damage + ", remaining health: " + health);
         if (health <= 0f)
         {
-            GiveExpToPlayer();
+            GiveScoreToPlayer();
             Destroy(gameObject);
         }
     }
 
-    void GiveExpToPlayer()
+    void GiveScoreToPlayer()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
@@ -43,9 +43,9 @@ public class Enemy : MonoBehaviour
             PlayerController pc = player.GetComponent<PlayerController>();
             if (pc != null)
             {
-                pc.AddExp(expWorth);
-                Debug.Log("Player gained " + expWorth + " experience.");
-                Debug.Log("Player level: " + pc.level + ", experience: " + pc.exp);
+                pc.AddScore(scoreWorth);
+                Debug.Log("Player gained " + scoreWorth + " score.");
+                Debug.Log("Player's new score: " + pc.score);
             }
         }
     }

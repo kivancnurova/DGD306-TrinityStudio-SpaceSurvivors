@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -14,10 +15,8 @@ public class PlayerController : MonoBehaviour
 
     public float health = 100f;
 
-    [Header("Experience")]
-    public float exp = 0f;
-    public int level = 1;
-    public float expToLevelUp = 100f;
+    public float score = 0f;
+    public TMP_Text scoreText;
 
     Vector2 movement;
 
@@ -41,6 +40,16 @@ public class PlayerController : MonoBehaviour
             }
             fireTimer = fireRate;
         }
+        
+        UpdateScoreUI();
+    }
+
+    void UpdateScoreUI()
+    {
+        if (scoreText != null)
+        {
+            scoreText.text = score.ToString("0");
+        }
     }
 
     void FixedUpdate()
@@ -58,14 +67,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void AddExp(float amount)
+    public void AddScore(float amount)
     {
-        exp += amount;
-        if (exp >= expToLevelUp)
-        {
-            exp -= expToLevelUp;
-            level++;
-            expToLevelUp *= 1.2f; // seviye başına daha fazla exp gereksinimi
-        }
+        score += amount;
     }
 }
