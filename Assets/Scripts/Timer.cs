@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
+    public UpgradeManager upgradeManager;
     public TextMeshProUGUI timerText;
     public GameObject marketPanel;
     public float elapsedTime = 0f;
@@ -15,6 +16,14 @@ public class Timer : MonoBehaviour
     private float nextTrigger = 10f;
 
 
+
+    void Awake()
+    {
+        if(upgradeManager == null)
+        {
+            upgradeManager = FindObjectOfType<UpgradeManager>();
+        }
+    }
 
     void Start()
     {
@@ -36,29 +45,11 @@ public class Timer : MonoBehaviour
 
         if (elapsedTime >= nextTrigger)
         {
-            TriggerMarketUI();
+            upgradeManager.ShowUpgradeOptions();
             nextTrigger += interval;
         }
         
     }
-
-
-    private void TriggerMarketUI()
-    {
-        Time.timeScale = 0f;
-        isTimerRunning = false;
-
-        marketPanel.SetActive(true);
-    }
-
-    public void ResumeGame()
-    {
-        marketPanel.SetActive(false);
-        Time.timeScale = 1f;
-        isTimerRunning = true;
-    }
-
-    
 
     public float GetElapsedTime()
     {

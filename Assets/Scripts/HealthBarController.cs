@@ -36,7 +36,7 @@ public class HealthBarController : MonoBehaviour
         UpdateBar();
     }
 
-    private void UpdateBar()
+    public void UpdateBar()
     {
         float maxH = playerStats.playerMaxHealth;
         float curH = playerStats.playerCurrentHealth;
