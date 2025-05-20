@@ -24,6 +24,7 @@ public class UpgradeManager : MonoBehaviour
         public string name;
         public string description;
         public Sprite icon;
+        public int cost;
         public System.Action effect;
     }
 
@@ -36,6 +37,7 @@ public class UpgradeManager : MonoBehaviour
     public TMP_Text[] upgradeNames; // UpgradeName1, UpgradeName2, UpgradeName3
     public Image[] upgradeImages; // UpgradeImage1, UpgradeImage2, UpgradeImage3
     public TMP_Text[] upgradeDescriptions; // UpgradeDescription1, UpgradeDescription2, UpgradeDescription3
+    public TMP_Text[] upgradeCosts; // UpgradeCost1, UpgradeCost2, UpgradeCost3
     public Button[] upgradeButtons; // UpgradeButton1, UpgradeButton2, UpgradeButton3
 
 
@@ -67,12 +69,14 @@ public class UpgradeManager : MonoBehaviour
                 name = "Attack Damage",
                 description = "Increases Player Attack Damage: " + playerAttackDamageUpgradeAmount,
                 icon = Resources.Load<Sprite>("Icons/AttackDamageIcon"),
+                cost = 75,
                 effect = () => playerStats.playerAttackDamage += playerAttackDamageUpgradeAmount
             },
             new UpgradeOption
             {
                 name = "Max Health",
                 description = "Increases Player Max Health: " + playerMaxHealthUpgradeAmount + " and heals 15 health instantly",
+                cost = 50,
                 icon = Resources.Load<Sprite>("Icons/MaxHealthIcon"),
                 effect = () =>
                 {
@@ -86,6 +90,7 @@ public class UpgradeManager : MonoBehaviour
                 name = "Regeneration",
                 description = "Regenerate " + playerRegenerationUpgradeAmount + " Health Instantly",
                 icon = Resources.Load<Sprite>("Icons/RegenerationIcon"),
+                cost = 75,
                 effect = () =>
                 {
                     if(playerStats.playerCurrentHealth + playerRegenerationUpgradeAmount > playerStats.playerMaxHealth)
@@ -100,6 +105,7 @@ public class UpgradeManager : MonoBehaviour
                 name = "Movement Speed",
                 description = "Increases Player Movement Speed: " + playerMovementSpeedUpgradeAmount,
                 icon = Resources.Load<Sprite>("Icons/MovementSpeedIcon"),
+                cost = 75,
                 effect = () => playerStats.playerMovementSpeed += playerMovementSpeedUpgradeAmount
             },
             new UpgradeOption
@@ -107,6 +113,7 @@ public class UpgradeManager : MonoBehaviour
                 name = "Attack Speed",
                 description = "Increases Player Attack Speed: " + playerFireRateUpgradeAmount,
                 icon = Resources.Load<Sprite>("Icons/AttackSpeedIcon"),
+                cost = 50,
                 effect = () => playerStats.playerFireRate -= playerFireRateUpgradeAmount
             },
             new UpgradeOption
@@ -114,6 +121,7 @@ public class UpgradeManager : MonoBehaviour
                 name = "Bullet Speed",
                 description = "Increases player bullet speed: " + playerBulletSpeedUpgradeAmount,
                 icon = Resources.Load<Sprite>("Icons/BulletSpeedIcon"),
+                cost = 50,
                 effect = () => playerStats.playerBulletSpeed += playerBulletSpeedUpgradeAmount
             },
         };
@@ -134,15 +142,20 @@ public class UpgradeManager : MonoBehaviour
             upgradeNames[i].text = upgrade.name;
             upgradeImages[i].sprite = upgrade.icon;
             upgradeDescriptions[i].text = upgrade.description;
+            upgradeCosts[i].text = "Cost: " + upgrade.cost.ToString() + "Score";
 
             // Set button behavior
             Button button = upgradeButtons[i];
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(() =>
             {
-                ApplyUpgrade(upgrade);
-                upgradePanel.SetActive(false);
-                Time.timeScale = 1;
+                if (playerStats.score >= upgrade.cost)
+                {
+                    playerStats.score -= upgrade.cost;
+                    ApplyUpgrade(upgrade);
+                    upgradePanel.SetActive(false);
+                    Time.timeScale = 1;
+                }
             });
         }
     }
@@ -152,9 +165,9 @@ public class UpgradeManager : MonoBehaviour
         Debug.Log("Applied upgrade: " + upgrade.name);
         upgrade.effect?.Invoke();
     }
-    
 
-        private List<UpgradeOption> GetRandomUpgrades(int count)
+
+    private List<UpgradeOption> GetRandomUpgrades(int count)
     {
         List<UpgradeOption> randomUpgrades = new List<UpgradeOption>();
         List<UpgradeOption> availableUpgrades = new List<UpgradeOption>(allUpgrades);
