@@ -9,6 +9,7 @@ public class UpgradeManager : MonoBehaviour
     public PlayerStats playerStats;
     public PlayerController playerController;
     public HealthBarController healthBarController;
+    public Button skipButton;
 
     [Header("Upgrade Amounts")]
     public int playerAttackDamageUpgradeAmount;
@@ -157,6 +158,13 @@ public class UpgradeManager : MonoBehaviour
                     Time.timeScale = 1;
                 }
             });
+            skipButton.onClick.RemoveAllListeners();
+            skipButton.onClick.AddListener(() =>
+            {
+                upgradePanel.SetActive(false);
+                Time.timeScale = 1;
+            });
+
         }
     }
 
@@ -183,8 +191,5 @@ public class UpgradeManager : MonoBehaviour
 
         return randomUpgrades;
     }
-
-
-
 
 }

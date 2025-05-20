@@ -8,7 +8,6 @@ public class Timer : MonoBehaviour
 {
     public UpgradeManager upgradeManager;
     public TextMeshProUGUI timerText;
-    public GameObject marketPanel;
     public float elapsedTime = 0f;
     private bool isTimerRunning = false;
 
@@ -28,7 +27,6 @@ public class Timer : MonoBehaviour
     void Start()
     {
         isTimerRunning = true;
-        marketPanel.SetActive(false);
     }
 
     void Update()
