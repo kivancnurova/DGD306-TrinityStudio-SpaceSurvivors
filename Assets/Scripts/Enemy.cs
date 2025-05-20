@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     public Transform firePoint;
     public float fireRate = 1.5f;
     private float timer;
-    public float scoreWorth = 50f;
+    public int scoreWorth = 50;
 
     void Update()
     {
@@ -40,12 +40,12 @@ public class Enemy : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
-            PlayerController pc = player.GetComponent<PlayerController>();
-            if (pc != null)
+            PlayerStats playerStats = FindObjectOfType<PlayerStats>();
+            if (playerStats != null)
             {
-                pc.AddScore(scoreWorth);
+                playerStats.score += scoreWorth;
                 Debug.Log("Player gained " + scoreWorth + " score.");
-                Debug.Log("Player's new score: " + pc.score);
+                Debug.Log("Player's new score: " + playerStats.score);
             }
         }
     }

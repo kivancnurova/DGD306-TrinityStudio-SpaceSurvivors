@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3506545732611682849}
   - component: {fileID: 6283768046698571587}
-  - component: {fileID: 2943916322209312521}
   - component: {fileID: 848369986612438854}
+  - component: {fileID: -5798254977330119253}
+  - component: {fileID: 2943916322209312521}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -63,25 +64,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2943916322209312521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4662578180584870944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f098f1c2db025294a87c17fc6feb6c1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  bulletPrefab: {fileID: 4328558659638032358, guid: 20c572f8109677c43b193dd0f4d6f450, type: 3}
-  firePoint: {fileID: 1838150189031105797}
-  fireRate: 1
-  health: 100
-  score: 0
-  scoreText: {fileID: 0}
 --- !u!61 &848369986612438854
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -127,6 +109,41 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.3142657}
   m_EdgeRadius: 0
+--- !u!114 &-5798254977330119253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4662578180584870944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8fd236d8f50c7f4d942dadba6eeb3c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+  playerMaxHealth: 100
+  playerCurrentHealth: 100
+  playerAttackDamage: 10
+  playerMovementSpeed: 5
+  playerBulletSpeed: 5
+  playerFireRate: 1.2
+--- !u!114 &2943916322209312521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4662578180584870944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f098f1c2db025294a87c17fc6feb6c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStats: {fileID: 0}
+  bulletPrefab: {fileID: 4328558659638032358, guid: 20c572f8109677c43b193dd0f4d6f450, type: 3}
+  firePoint: {fileID: 1838150189031105797}
+  scoreText: {fileID: 0}
 --- !u!1 &6768749792408701907
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,9 +4,18 @@ using UnityEngine;
 
 public class BasicBullet : MonoBehaviour
 {
-    public float speed = 10f;
-    public float damage = 10f;
+    public PlayerStats playerStats;
     public float lifeTime = 2f;
+
+
+    void Awake()
+    {
+        if (playerStats == null)
+        {
+            playerStats = FindObjectOfType<PlayerStats>();
+        }
+    }
+
 
     void Start()
     {
@@ -15,7 +24,7 @@ public class BasicBullet : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector2.up * speed * Time.deltaTime);
+        transform.Translate(Vector2.up * playerStats.playerBulletSpeed * Time.deltaTime);
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -25,7 +34,7 @@ public class BasicBullet : MonoBehaviour
             Enemy enemy = collision.GetComponent<Enemy>();
             if (enemy != null)
             {
-                enemy.TakeDamage(damage);
+                enemy.TakeDamage(playerStats.playerAttackDamage);
             }
             Destroy(gameObject);
         }

@@ -5,40 +5,42 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    public PlayerStats playerStats;
     private Rigidbody2D rb;
 
     public GameObject bulletPrefab;
     public Transform firePoint;
-    public float fireRate = 0.5f;
-    private float fireTimer;
+    private float nextFireTime = 0f;
 
-    public float health = 100f;
-
-    public float score = 0f;
     public TMP_Text scoreText;
 
     Vector2 movement;
 
+
+    void Awake()
+    {
+        if (playerStats == null)
+        {
+            playerStats = FindObjectOfType<PlayerStats>();
+        }
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        fireTimer = fireRate;
+        playerStats.playerCurrentHealth = 100; 
     }
 
     void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+        rb.velocity = movement.normalized * playerStats.playerMovementSpeed;
 
-        fireTimer -= Time.deltaTime;
-        if (fireTimer <= 0f)
+        if(Time.time > nextFireTime)
         {
-            if (bulletPrefab != null && firePoint != null)
-            {
                 Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            }
-            fireTimer = fireRate;
+                nextFireTime = Time.time + playerStats.playerFireRate;
         }
         
         UpdateScoreUI();
@@ -48,27 +50,19 @@ public class PlayerController : MonoBehaviour
     {
         if (scoreText != null)
         {
-            scoreText.text = score.ToString("0");
+            scoreText.text = playerStats.score.ToString("0");
         }
     }
 
-    void FixedUpdate()
-    {
-        rb.velocity = movement.normalized * moveSpeed;
-    }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
-        health -= damage;
-        Debug.Log("Player took damage: " + damage + ", remaining health: " + health);
-        if (health <= 0f)
+        playerStats.playerCurrentHealth -= damage;
+        Debug.Log("Player took damage: " + damage + ", remaining health: " + playerStats.playerCurrentHealth);
+        if (playerStats.playerCurrentHealth <= 0f)
         {
             Destroy(gameObject);
         }
     }
 
-    public void AddScore(float amount)
-    {
-        score += amount;
-    }
 }
