@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Enemy : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class Enemy : MonoBehaviour
     public float fireRate = 1.5f;
     private float timer;
     public int scoreWorth = 50;
+
+    public event Action onDestroyed;
+
 
     void Update()
     {
@@ -31,6 +35,7 @@ public class Enemy : MonoBehaviour
         if (health <= 0f)
         {
             GiveScoreToPlayer();
+            onDestroyed?.Invoke();
             Destroy(gameObject);
         }
     }
