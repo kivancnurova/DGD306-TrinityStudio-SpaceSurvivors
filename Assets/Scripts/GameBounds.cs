@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class GameBounds : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static float yMid;
 
-    // Update is called once per frame
-    void Update()
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    static void Init()
     {
-        
+        yMid = Camera.main.ViewportToWorldPoint(new Vector3(0, 0.5f, 0)).y;
     }
 }

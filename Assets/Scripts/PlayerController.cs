@@ -42,6 +42,17 @@ public class PlayerController : MonoBehaviour
                 Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
                 nextFireTime = Time.time + playerStats.playerFireRate;
         }
+
+
+
+        Vector3 pos = transform.position;
+        float xMin = Camera.main.ViewportToWorldPoint(Vector3.zero).x;
+        float xMax = Camera.main.ViewportToWorldPoint(Vector3.right).x;
+        float yMin = Camera.main.ViewportToWorldPoint(Vector3.zero).y;
+        float yMax = GameBounds.yMid;
+        pos.x = Mathf.Clamp(pos.x, xMin, xMax);
+        pos.y = Mathf.Clamp(pos.y, yMin, yMax);
+        transform.position = pos;
         
         UpdateScoreUI();
     }
