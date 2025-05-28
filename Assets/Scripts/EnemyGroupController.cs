@@ -2,76 +2,66 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public class EnemySpawnInfo
+{
+    public GameObject prefab;
+    public Transform spawnPoint;
+    public Transform targetPoint;
+    public MovementType movementType;
+    public float entrySpeed = 4f;
+
+    public float sideMinX = -2f;
+    public float sideMaxX = +2f;
+
+    public float speed = 2f;
+    public float amplitude = 1f;
+    public float frequency = 1f;
+}
+
+public enum MovementType { Stationary, SideToSide, ZigZag}
+
 public class EnemyGroupController : MonoBehaviour
 {
-    public float moveSpeed = 2f;
-    public float boundaryX = 8f;
-    public float moveDownAmount = 0.5f;
-
-    public float speedIncreaseInterval = 10f;
-    public float speedIncreaseAmount = 0.5f;
-
-    private float speedTimer;
-    private int direction = 1;
-
-    private bool isMovingDown = false;
-    private Vector3 targetPosition;
-    public float smoothDownSpeed = 3f;
+    public List<EnemySpawnInfo> enemies = new List<EnemySpawnInfo>();
 
     void Start()
     {
-        speedTimer = speedIncreaseInterval;
+        foreach (var info in enemies)
+            Spawn(info);
     }
 
-    void Update()
+    void Spawn(EnemySpawnInfo info)
     {
-        if (isMovingDown)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, smoothDownSpeed * Time.deltaTime);
-            if (Vector3.Distance(transform.position, targetPosition) < 0.01f)
-            {
-                isMovingDown = false;
-            }
-            return;
-        }
+        GameObject go = Instantiate(info.prefab, info.spawnPoint.position, Quaternion.identity);
 
-        transform.Translate(Vector2.right * direction * moveSpeed * Time.deltaTime);
-
-        float rightMost = float.MinValue;
-        float leftMost = float.MaxValue;
-
-        foreach (Transform enemy in transform)
+        var entrance = go.AddComponent<OffScreenEntrance>();
+        entrance.speed = info.speed * 1.5f;
+        entrance.Initialize(info.targetPoint, () =>
         {
-            if (enemy != null)
-            {
-                float x = enemy.position.x;
-                if (x > rightMost) rightMost = x;
-                if (x < leftMost) leftMost = x;
-            }
-        }
-
-        if (direction == 1 && rightMost >= boundaryX)
-        {
-            direction = -1;
-            SetMoveDownTarget();
-        }
-        else if (direction == -1 && leftMost <= -boundaryX)
-        {
-            direction = 1;
-            SetMoveDownTarget();
-        }
-
-        speedTimer -= Time.deltaTime;
-        if (speedTimer <= 0f)
-        {
-            moveSpeed += speedIncreaseAmount;
-            speedTimer = speedIncreaseInterval;
-        }
+            AttachMovement(go.transform, info);
+        });
     }
 
-    void SetMoveDownTarget()
+    void AttachMovement(Transform enemy, EnemySpawnInfo info)
     {
-        targetPosition = transform.position + new Vector3(0, -moveDownAmount, 0);
-        isMovingDown = true;
+        switch (info.movementType)
+        {
+            case MovementType.Stationary:
+                break;
+            case MovementType.SideToSide:
+                var sts = enemy.gameObject.AddComponent<SideToSideMovement>();
+                sts.speed = info.speed;
+                sts.minX = info.sideMinX;
+                sts.maxX = info.sideMaxX;
+                break;
+            case MovementType.ZigZag:
+                var zz = enemy.gameObject.AddComponent<ZigZagMovement>();
+                zz.speed = info.speed;
+                zz.amplitude = info.amplitude;
+                zz.frequency = info.frequency;
+                zz.Initialize(enemy);
+                break;
+        }
     }
 }
