@@ -2146,7 +2146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - prefab: {fileID: 812100695028659250, guid: 4ce5e7069e5885545be0ef7245150483, type: 3}
+  - prefab: {fileID: 5270530220691093061, guid: 4d962c1ef6c34124cb5bb0cc4ff965e0, type: 3}
     spawnPoint: {fileID: 162556341}
     targetPoint: {fileID: 1030619506}
     movementType: 0
@@ -3467,14 +3467,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -5798254977330119253, guid: 29279fcada1200349bd57fa3a0c6b51d, type: 3}
-      propertyPath: playerFireRate
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2943916322209312521, guid: 29279fcada1200349bd57fa3a0c6b51d, type: 3}
-      propertyPath: fireRate
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2943916322209312521, guid: 29279fcada1200349bd57fa3a0c6b51d, type: 3}
       propertyPath: scoreText
       value: 
@@ -3524,8 +3516,7 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 4057001467847664694, guid: 29279fcada1200349bd57fa3a0c6b51d, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29279fcada1200349bd57fa3a0c6b51d, type: 3}

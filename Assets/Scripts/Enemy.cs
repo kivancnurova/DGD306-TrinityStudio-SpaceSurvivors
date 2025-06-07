@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public float health = 30f;
     public GameObject bulletPrefab;
     public Transform firePoint;
+    public Transform firePoint2; // Optional second fire point
     public float fireRate = 1.5f;
     private float timer;
     public int scoreWorth = 50;
@@ -20,10 +21,16 @@ public class Enemy : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer <= 0f)
         {
-            if (bulletPrefab && firePoint)
+            if (bulletPrefab && firePoint && firePoint2)
+            {
+                Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+                Instantiate(bulletPrefab, firePoint2.position, firePoint2.rotation);
+            }
+            else if (bulletPrefab && firePoint && !firePoint2)
             {
                 Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             }
+
             timer = fireRate;
         }
     }
