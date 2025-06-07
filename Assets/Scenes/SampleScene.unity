@@ -2156,7 +2156,7 @@ MonoBehaviour:
     speed: 4
     amplitude: 0
     frequency: 0
-  - prefab: {fileID: 5151817477463136084, guid: 0685d5fb9924f924b8f19f0b45b5e22b, type: 3}
+  - prefab: {fileID: 1663716299189457433, guid: 9162d4b3a37c5b14987bb6710c963c9c, type: 3}
     spawnPoint: {fileID: 805855140}
     targetPoint: {fileID: 873594514}
     movementType: 1
