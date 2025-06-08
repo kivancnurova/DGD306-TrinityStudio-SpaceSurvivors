@@ -50,7 +50,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 45
   bulletPrefab: {fileID: 8591429187568804703, guid: 5640e5aad0110bf4196672e14e8ca4b5, type: 3}
-  firePoint: {fileID: 3657050360128030940}
+  firePoint1: {fileID: 3657050360128030940}
+  firePoint2: {fileID: 0}
+  firePoint3: {fileID: 0}
+  firePoint4: {fileID: 0}
   fireRate: 1.5
   scoreWorth: 50
 --- !u!50 &1060428025744560276

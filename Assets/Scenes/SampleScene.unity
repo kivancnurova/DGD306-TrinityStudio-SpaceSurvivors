@@ -2156,7 +2156,7 @@ MonoBehaviour:
     speed: 4
     amplitude: 0
     frequency: 0
-  - prefab: {fileID: 1663716299189457433, guid: 9162d4b3a37c5b14987bb6710c963c9c, type: 3}
+  - prefab: {fileID: 3448462829018983781, guid: 10e48b8b15fe341c69bdcfa26cb74954, type: 3}
     spawnPoint: {fileID: 805855140}
     targetPoint: {fileID: 873594514}
     movementType: 1
@@ -2166,7 +2166,7 @@ MonoBehaviour:
     speed: 2
     amplitude: 5
     frequency: 0
-  - prefab: {fileID: 5151817477463136084, guid: 0685d5fb9924f924b8f19f0b45b5e22b, type: 3}
+  - prefab: {fileID: 4599137896056171337, guid: 4de8212b6a6c34665a4b6c4a1d331ace, type: 3}
     spawnPoint: {fileID: 461762030}
     targetPoint: {fileID: 217064305}
     movementType: 1
@@ -3467,6 +3467,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5798254977330119253, guid: 29279fcada1200349bd57fa3a0c6b51d, type: 3}
+      propertyPath: playerFireRate
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2943916322209312521, guid: 29279fcada1200349bd57fa3a0c6b51d, type: 3}
       propertyPath: scoreText
       value: 

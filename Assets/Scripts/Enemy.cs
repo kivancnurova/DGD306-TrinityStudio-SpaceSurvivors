@@ -7,11 +7,14 @@ public class Enemy : MonoBehaviour
 {
     public float health = 30f;
     public GameObject bulletPrefab;
-    public Transform firePoint;
-    public Transform firePoint2; // Optional second fire point
+    public Transform firePoint1;
+    public Transform firePoint2;
+    public Transform firePoint3;
+    public Transform firePoint4;
     public float fireRate = 1.5f;
     private float timer;
     public int scoreWorth = 50;
+
 
     public event Action onDestroyed;
 
@@ -21,14 +24,20 @@ public class Enemy : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer <= 0f)
         {
-            if (bulletPrefab && firePoint && firePoint2)
+            if (bulletPrefab != null)
             {
-                Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-                Instantiate(bulletPrefab, firePoint2.position, firePoint2.rotation);
-            }
-            else if (bulletPrefab && firePoint && !firePoint2)
-            {
-                Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+                // Aktif firePoint’leri tek tek kontrol edip listeye ekleyelim
+                List<Transform> activePoints = new List<Transform>();
+                if (firePoint1 != null) activePoints.Add(firePoint1);
+                if (firePoint2 != null) activePoints.Add(firePoint2);
+                if (firePoint3 != null) activePoints.Add(firePoint3);
+                if (firePoint4 != null) activePoints.Add(firePoint4);
+
+                // Liste üzerinden instantiate et
+                foreach (var fp in activePoints)
+                {
+                    Instantiate(bulletPrefab, fp.position, fp.rotation);
+                }
             }
 
             timer = fireRate;
