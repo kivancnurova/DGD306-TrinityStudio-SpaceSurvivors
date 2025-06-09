@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,21 +19,29 @@ public class EnemySpawnInfo
     public float frequency = 1f;
 }
 
-public enum MovementType { Stationary, SideToSide, ZigZag}
+public enum MovementType { Stationary, SideToSide, ZigZag }
 
 public class EnemyGroupController : MonoBehaviour
 {
     public List<EnemySpawnInfo> enemies = new List<EnemySpawnInfo>();
 
+    private List<GameObject> activeEnemies = new List<GameObject>();
+
+    public event Action OnWaveCompleted;
+
     void Start()
     {
         foreach (var info in enemies)
             Spawn(info);
+
+        if (activeEnemies.Count == 0)
+            InvokeWaveCompleted();
     }
 
     void Spawn(EnemySpawnInfo info)
     {
         GameObject go = Instantiate(info.prefab, info.spawnPoint.position, Quaternion.identity);
+        activeEnemies.Add(go);
 
         var entrance = go.AddComponent<OffScreenEntrance>();
         entrance.speed = info.speed * 1.5f;
@@ -41,6 +49,15 @@ public class EnemyGroupController : MonoBehaviour
         {
             AttachMovement(go.transform, info);
         });
+
+        var notifier = go.AddComponent<DestroyNotifier>();
+        notifier.onDestroyed = () =>
+        {
+            activeEnemies.Remove(go);
+
+            if (activeEnemies.Count == 0)
+                InvokeWaveCompleted();
+        };
     }
 
     void AttachMovement(Transform enemy, EnemySpawnInfo info)
@@ -49,12 +66,14 @@ public class EnemyGroupController : MonoBehaviour
         {
             case MovementType.Stationary:
                 break;
+
             case MovementType.SideToSide:
                 var sts = enemy.gameObject.AddComponent<SideToSideMovement>();
                 sts.speed = info.speed;
                 sts.minX = info.sideMinX;
                 sts.maxX = info.sideMaxX;
                 break;
+
             case MovementType.ZigZag:
                 var zz = enemy.gameObject.AddComponent<ZigZagMovement>();
                 zz.speed = info.speed;
@@ -63,5 +82,11 @@ public class EnemyGroupController : MonoBehaviour
                 zz.Initialize(enemy);
                 break;
         }
+    }
+
+    private void InvokeWaveCompleted()
+    {
+        OnWaveCompleted?.Invoke();
+        Debug.Log($"{gameObject.name} tamamlandı.");
     }
 }

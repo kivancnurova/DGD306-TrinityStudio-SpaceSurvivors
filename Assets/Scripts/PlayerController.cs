@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        playerStats.playerCurrentHealth = 100; 
+        playerStats.playerCurrentHealth = playerStats.playerMaxHealth; 
     }
 
     void Update()
