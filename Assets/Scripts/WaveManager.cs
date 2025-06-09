@@ -6,44 +6,44 @@ public class WaveManager : MonoBehaviour
 {
     public List<GameObject> waves = new List<GameObject>();
 
-    private int currentWave = 0;
+    private List<EnemyGroupController> controllers = new List<EnemyGroupController>();
+    private int currentIndex = 0;
 
     void Start()
     {
-        for (int i = 0; i < waves.Count; i++)
-            waves[i].SetActive(false);
+        foreach (var waveGO in waves)
+        {
+            var ctrl = waveGO.GetComponent<EnemyGroupController>();
+            if (ctrl != null)
+            {
+                controllers.Add(ctrl);
+                ctrl.OnWaveCompleted += OnWaveCompleted;
+                ctrl.StopWave();
+            }
+            waveGO.SetActive(false);
+        }
 
-        if (waves.Count > 0)
+        if (controllers.Count > 0)
             ActivateWave(0);
     }
 
-    void ActivateWave(int index)
+    private void ActivateWave(int index)
     {
-        currentWave = index;
+        currentIndex = index;
         var waveGO = waves[index];
         waveGO.SetActive(true);
-
-        var controller = waveGO.GetComponent<EnemyGroupController>();
-        if (controller != null)
-        {
-            controller.OnWaveCompleted += () =>
-            {
-                StartNextWave();
-            };
-        }
-        else
-        {
-            Debug.LogWarning($"[{waveGO.name}] üzerinde EnemyGroupController bulunamadı!");
-            StartNextWave();
-        }
+        controllers[index].StartWave();
     }
 
-    void StartNextWave()
+    private void OnWaveCompleted()
     {
-        int next = currentWave + 1;
-        if (next < waves.Count)
-            ActivateWave(next);
-        else
-            Debug.Log("Tüm dalgalar tamamlandı!");
+        controllers[currentIndex].StopWave();
+        waves[currentIndex].SetActive(false);
+
+        int next = currentIndex + 1;
+        if (next >= controllers.Count)
+            next = 0;
+
+        ActivateWave(next);
     }
 }
