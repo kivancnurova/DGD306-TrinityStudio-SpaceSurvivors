@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -73,6 +74,7 @@ public class PlayerController : MonoBehaviour
         if (playerStats.playerCurrentHealth <= 0f)
         {
             Destroy(gameObject);
+            SceneManager.LoadScene("MainMenu");
         }
     }
 

@@ -6498,7 +6498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5798254977330119253, guid: 29279fcada1200349bd57fa3a0c6b51d, type: 3}
       propertyPath: playerMaxHealth
-      value: 1000
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -5798254977330119253, guid: 29279fcada1200349bd57fa3a0c6b51d, type: 3}
       propertyPath: playerAttackDamage
@@ -6506,7 +6506,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5798254977330119253, guid: 29279fcada1200349bd57fa3a0c6b51d, type: 3}
       propertyPath: playerCurrentHealth
-      value: 1000
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2943916322209312521, guid: 29279fcada1200349bd57fa3a0c6b51d, type: 3}
       propertyPath: scoreText
