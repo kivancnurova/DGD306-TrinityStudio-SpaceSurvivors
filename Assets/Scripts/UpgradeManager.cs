@@ -174,7 +174,7 @@ public class UpgradeManager : MonoBehaviour
         upgrade.effect?.Invoke();
     }
 
-
+//
     private List<UpgradeOption> GetRandomUpgrades(int count)
     {
         List<UpgradeOption> randomUpgrades = new List<UpgradeOption>();
