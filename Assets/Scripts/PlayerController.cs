@@ -17,12 +17,21 @@ public class PlayerController : MonoBehaviour
 
     Vector2 movement;
 
+    public AudioClip playerShootSound;
+    public AudioSource audioSource;
+
 
     void Awake()
     {
         if (playerStats == null)
         {
             playerStats = FindObjectOfType<PlayerStats>();
+        }
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            Debug.LogError("AudioSource component is missing from the PlayerController GameObject.");
         }
     }
 
@@ -38,10 +47,13 @@ public class PlayerController : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
         rb.velocity = movement.normalized * playerStats.playerMovementSpeed;
 
-        if(Time.time > nextFireTime)
+        if (Time.time > nextFireTime)
         {
-                Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-                nextFireTime = Time.time + playerStats.playerFireRate;
+            Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            audioSource.pitch = Random.Range(0.8f, 1.2f); // Randomize pitch for each shot
+            audioSource.PlayOneShot(playerShootSound);
+            nextFireTime = Time.time + playerStats.playerFireRate;
+            
         }
 
 
