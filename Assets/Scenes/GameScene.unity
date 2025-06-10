@@ -963,7 +963,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4da8ce154ccee469bbfadc9b610e6159, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a86d11b5092b0441aaee0b6634c3a95e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6498,7 +6498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5798254977330119253, guid: 29279fcada1200349bd57fa3a0c6b51d, type: 3}
       propertyPath: playerMaxHealth
-      value: 10
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: -5798254977330119253, guid: 29279fcada1200349bd57fa3a0c6b51d, type: 3}
       propertyPath: playerAttackDamage
@@ -6506,7 +6506,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5798254977330119253, guid: 29279fcada1200349bd57fa3a0c6b51d, type: 3}
       propertyPath: playerCurrentHealth
-      value: 10
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 2943916322209312521, guid: 29279fcada1200349bd57fa3a0c6b51d, type: 3}
       propertyPath: scoreText
