@@ -19,10 +19,11 @@ public class MainMenuController : MonoBehaviour
         Application.Quit();
         #endif
     }
-    
-    
+
+
     public void NextLevel()
     {
         SceneManager.LoadScene("Level2");
+        Time.timeScale = 1f;
     }
 }
