@@ -19,4 +19,10 @@ public class MainMenuController : MonoBehaviour
         Application.Quit();
         #endif
     }
+    
+    
+    public void NextLevel()
+    {
+        SceneManager.LoadScene("Level2");
+    }
 }

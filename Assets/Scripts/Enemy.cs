@@ -14,7 +14,6 @@ public class Enemy : MonoBehaviour
     public float fireRate = 1.5f;
     private float timer;
     public int scoreWorth = 50;
-    public audioClip enemy;
 
 
     public event Action onDestroyed;
