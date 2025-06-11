@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject bulletPrefab;
     public Transform firePoint;
+    public Transform firePoint2;
     private float nextFireTime = 0f;
 
     public TMP_Text scoreText;
@@ -49,11 +50,21 @@ public class PlayerController : MonoBehaviour
 
         if (Time.time > nextFireTime)
         {
-            Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            audioSource.pitch = Random.Range(0.8f, 1.2f); // Randomize pitch for each shot
-            audioSource.PlayOneShot(playerShootSound);
-            nextFireTime = Time.time + playerStats.playerFireRate;
-            
+            if (!firePoint2)
+            {
+                Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+                audioSource.pitch = Random.Range(0.8f, 1.2f);
+                audioSource.PlayOneShot(playerShootSound);
+                nextFireTime = Time.time + playerStats.playerFireRate;
+            }
+            if (firePoint2)
+            {
+                Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+                Instantiate(bulletPrefab, firePoint2.position, firePoint2.rotation);
+                audioSource.pitch = Random.Range(0.8f, 1.2f);
+                audioSource.PlayOneShot(playerShootSound);
+                nextFireTime = Time.time + playerStats.playerFireRate;
+            }
         }
 
 

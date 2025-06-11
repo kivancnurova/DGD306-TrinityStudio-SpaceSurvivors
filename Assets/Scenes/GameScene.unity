@@ -5729,7 +5729,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2052376379}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -6082,7 +6082,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5798254977330119253, guid: 29279fcada1200349bd57fa3a0c6b51d, type: 3}
       propertyPath: playerAttackDamage
-      value: 30
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: -5798254977330119253, guid: 29279fcada1200349bd57fa3a0c6b51d, type: 3}
       propertyPath: playerCurrentHealth
