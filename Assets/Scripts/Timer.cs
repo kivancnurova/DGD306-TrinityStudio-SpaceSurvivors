@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Timer : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class Timer : MonoBehaviour
 
     public float interval = 10f;
     private float nextTrigger = 10f;
+
+    public GameObject firstOption;
 
 
 
@@ -44,6 +47,7 @@ public class Timer : MonoBehaviour
         if (elapsedTime >= nextTrigger)
         {
             upgradeManager.ShowUpgradeOptions();
+            EventSystem.current.SetSelectedGameObject(firstOption);
             nextTrigger += interval;
         }
         

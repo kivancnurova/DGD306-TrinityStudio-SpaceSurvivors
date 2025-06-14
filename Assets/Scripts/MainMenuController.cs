@@ -3,10 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
 
 public class MainMenuController : MonoBehaviour
 {
-        public void PlayGame()
+
+    public GameObject firstOption;
+
+    void Awake()
+    {
+        EventSystem.current.SetSelectedGameObject(firstOption);
+    }
+
+    public void PlayGame()
     {
         SceneManager.LoadScene("GameScene");
     }

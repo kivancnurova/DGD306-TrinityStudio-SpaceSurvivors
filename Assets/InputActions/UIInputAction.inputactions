@@ -1,0 +1,90 @@
+{
+    "name": "UIInputAction",
+    "maps": [
+        {
+            "name": "Navigate",
+            "id": "14839fc5-84d1-4344-acdc-050b0f23d015",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Value",
+                    "id": "0831eef6-3fd1-4348-8be4-bd066dfde896",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9730d47e-d285-44e8-b85f-f6969fa359cb",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Submit",
+            "id": "2ef0d54f-e47f-452f-b262-576d32120aaf",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "3209bf5d-fc96-4918-b40f-4df922af097e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "8cdd42bd-5cba-487e-a44f-df1d309284cd",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Cancel",
+            "id": "7f3612fb-5463-40b4-af5d-b6ed16ab3634",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "b71e1294-225d-45b9-8743-9fb07df05f03",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7103559b-86d5-48b1-91ba-766813d56877",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

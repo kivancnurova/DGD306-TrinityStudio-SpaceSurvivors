@@ -266,6 +266,7 @@ MonoBehaviour:
   scoreText: {fileID: 0}
   playerShootSound: {fileID: 8300000, guid: 564c3398052984605925239d22485696, type: 3}
   audioSource: {fileID: 1016361170251014697}
+  moveAction: {fileID: 4272739216040758172, guid: 91970c23094729243a146168770ddab1, type: 3}
 --- !u!60 &3138819941438875968
 PolygonCollider2D:
   m_ObjectHideFlags: 0
