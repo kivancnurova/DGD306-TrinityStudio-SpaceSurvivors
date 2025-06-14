@@ -84,6 +84,62 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Point",
+            "id": "0d06f40c-5b48-4382-870a-afc622812557",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Value",
+                    "id": "1a0f9a38-6c3a-44d9-a1e1-d81e384c2bcb",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e3be6ba3-0d09-4b66-9e6e-29b5235c2383",
+                    "path": "<Pointer>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Click",
+            "id": "cda0dc4d-dc6c-4e11-89b1-13974c168539",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "bec5b66f-4c0f-4675-bf1d-1343dcf4fc8d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a3cd7094-be0a-4190-9fc5-47ab6d5fcbe3",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

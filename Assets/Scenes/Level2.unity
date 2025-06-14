@@ -3373,6 +3373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e222e16995a41436ca13d332217098bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstOption: {fileID: 0}
 --- !u!4 &1275512339
 Transform:
   m_ObjectHideFlags: 0
@@ -4488,11 +4489,11 @@ MonoBehaviour:
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
   m_ActionsAsset: {fileID: -944628639613478452, guid: b420d47a422056144a906c43cc6ea795, type: 3}
-  m_PointAction: {fileID: 0}
+  m_PointAction: {fileID: 8529407404357419558, guid: b420d47a422056144a906c43cc6ea795, type: 3}
   m_MoveAction: {fileID: -2548331104677860248, guid: b420d47a422056144a906c43cc6ea795, type: 3}
   m_SubmitAction: {fileID: -8140912494461589953, guid: b420d47a422056144a906c43cc6ea795, type: 3}
   m_CancelAction: {fileID: 2908005674269369547, guid: b420d47a422056144a906c43cc6ea795, type: 3}
-  m_LeftClickAction: {fileID: 0}
+  m_LeftClickAction: {fileID: 8382989966252404694, guid: b420d47a422056144a906c43cc6ea795, type: 3}
   m_MiddleClickAction: {fileID: 0}
   m_RightClickAction: {fileID: 0}
   m_ScrollWheelAction: {fileID: 0}
