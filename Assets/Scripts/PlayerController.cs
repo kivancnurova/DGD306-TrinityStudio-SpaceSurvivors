@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
@@ -16,10 +17,12 @@ public class PlayerController : MonoBehaviour
 
     public TMP_Text scoreText;
 
-    Vector2 movement;
+    Vector2 moveInput = Vector2.zero;
 
     public AudioClip playerShootSound;
     public AudioSource audioSource;
+
+    public InputActionReference moveAction;
 
 
     void Awake()
@@ -34,6 +37,27 @@ public class PlayerController : MonoBehaviour
         {
             Debug.LogError("AudioSource component is missing from the PlayerController GameObject.");
         }
+
+    }
+
+    void OnEnable()
+    {
+        if (moveAction != null && moveAction.action != null)
+        {
+            moveAction.action.Enable();
+            moveAction.action.performed += OnMovePerformed;
+            moveAction.action.canceled += OnMoveCanceled;
+        }
+    }
+
+    void OnDisable()
+    {
+        if (moveAction != null && moveAction.action != null)
+        {
+            moveAction.action.performed -= OnMovePerformed;
+            moveAction.action.canceled -= OnMoveCanceled;
+            moveAction.action.Disable();
+        }
     }
 
     void Start()
@@ -44,9 +68,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-        rb.velocity = movement.normalized * playerStats.playerMovementSpeed;
+        Vector2 movement = moveInput.normalized * playerStats.playerMovementSpeed;
+        rb.velocity = movement;
 
         if (Time.time > nextFireTime)
         {
@@ -79,6 +102,18 @@ public class PlayerController : MonoBehaviour
         transform.position = pos;
         
         UpdateScoreUI();
+    }
+
+
+    void OnMovePerformed(InputAction.CallbackContext context)
+    {
+        Vector2 val = context.ReadValue<Vector2>();
+        moveInput = val;
+    }
+
+    void OnMoveCanceled(InputAction.CallbackContext context)
+    {
+        moveInput = Vector2.zero;
     }
 
     void UpdateScoreUI()
