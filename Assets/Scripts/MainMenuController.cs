@@ -53,4 +53,9 @@ public class MainMenuController : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1f;
     }
+
+    public void LoadCoOpMenu()
+    {
+        SceneManager.LoadScene("CoOpMenu");
+    }
 }
