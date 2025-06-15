@@ -1203,6 +1203,7 @@ MonoBehaviour:
   - {fileID: 1546239658}
   level2Panel: {fileID: 0}
   level3Panel: {fileID: 1586293568}
+  NextLevelButton: {fileID: 0}
 --- !u!1 &379692794
 GameObject:
   m_ObjectHideFlags: 0
@@ -2818,19 +2819,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5798254977330119253, guid: 4a43355f0729b45748e5932386bd3a66, type: 3}
       propertyPath: playerFireRate
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -5798254977330119253, guid: 4a43355f0729b45748e5932386bd3a66, type: 3}
       propertyPath: playerMaxHealth
-      value: 1000
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: -5798254977330119253, guid: 4a43355f0729b45748e5932386bd3a66, type: 3}
       propertyPath: playerAttackDamage
-      value: 5000
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: -5798254977330119253, guid: 4a43355f0729b45748e5932386bd3a66, type: 3}
       propertyPath: playerCurrentHealth
-      value: 1000
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 2943916322209312521, guid: 4a43355f0729b45748e5932386bd3a66, type: 3}
       propertyPath: scoreText
@@ -4625,12 +4626,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: a86d11b5092b0441aaee0b6634c3a95e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aa9a76d89e2c4e04dbf2e9b71abe4c80, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.24, y: 10.24}
+  m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -4646,7 +4647,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
