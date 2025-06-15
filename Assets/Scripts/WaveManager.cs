@@ -1,19 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;  // Sahne kontrolü için
+using UnityEngine.SceneManagement;
 
 public class WaveManager : MonoBehaviour
 {
     public List<GameObject> waves = new List<GameObject>();
-    public GameObject level2Panel;      // Inspector’da atayın. Başlangıçta SetActive(false) olsun.
+    public GameObject level2Panel;
+    public GameObject level3Panel;
 
     private List<EnemyGroupController> controllers = new List<EnemyGroupController>();
     private int currentIndex = 0;
 
     void Start()
     {
-        // Başlangıçta Level2 paneli pasif yap:
         if (level2Panel != null)
             level2Panel.SetActive(false);
 
@@ -43,49 +43,36 @@ public class WaveManager : MonoBehaviour
 
     private void OnWaveCompleted()
     {
-        // Mevcut dalgayı durdur ve pasifleştir
         controllers[currentIndex].StopWave();
         waves[currentIndex].SetActive(false);
 
-        // Eğer son dalgadaysak
         if (currentIndex == controllers.Count - 1)
         {
-            // Hangi sahnedeyiz kontrol et:
             string sceneName = SceneManager.GetActiveScene().name;
             if (sceneName == "GameScene")
             {
-                // GameScene ise Level 2 panelini göster:
                 if (level2Panel != null)
                 {
-                    Time.timeScale = 0f; // Oyun durdurulsun
+                    Time.timeScale = 0f;
                     level2Panel.SetActive(true);
                 }
 
-                // Burada istemiyorsanız dijital döngü başlamasın; sadece panel göster.
-                    // Eğer panelde bir buton var ve o buton LoadScene("Level2") yapacaksa,
-                    // bu aşamada WaveManager durur. İsterseniz bu objeyi pasif edebilirsiniz:
-                    // this.enabled = false;
-                    // veya event unsubscribe:
-                    // foreach(var ctrl in controllers) ctrl.OnWaveCompleted -= OnWaveCompleted;
-                }
-                else if (sceneName == "Level2")
+            }
+            else if (sceneName == "Level2")
+            {
+                if (level3Panel != null)
                 {
-                    // Level2 sahnesindeysek dalgaları başa döndür:
-                    // currentIndex zaten son indeksti, yeni başa döneceğiz
-                    ActivateWave(0);
-                }
-                else
-                {
-                    // Başka sahne isimleri varsa, ihtiyaca göre ekleyin.
-                    // Örneğin başka bir Level3’e geçiş paneli vb.
-                    // Şimdilik döngüsel davranmak isterseniz:
-                    // ActivateWave(0);
-                    // veya hiçbir şey yapmayıp durdurabilirsiniz.
-                }
+                    Time.timeScale = 0f;
+                    level3Panel.SetActive(true);
+                }        
+            }
+            else if (sceneName == "Level3")
+            {
+                ActivateWave(0);
+            }
         }
         else
         {
-            // Son dalga değilse, sıradaki dalgayı aktif et
             ActivateWave(currentIndex + 1);
         }
     }
