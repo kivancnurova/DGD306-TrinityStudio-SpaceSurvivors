@@ -43,6 +43,12 @@ public class MainMenuController : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    public void LevelCoOpLoad()
+    {
+        SceneManager.LoadScene("CoOpGameScene");
+        Time.timeScale = 1f;
+    }
+
     public void ResumeGame()
     {
         Time.timeScale = 1f;
