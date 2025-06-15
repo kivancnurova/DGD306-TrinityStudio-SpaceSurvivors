@@ -111,25 +111,39 @@ public class MenuJoinManager : MonoBehaviour
         if (CoopGameManager.Instance.Player1Joined)
         {
             if (CoopGameManager.Instance.player1Gamepad != null)
+            {
                 player1StatusText.text = "Player 1: Joined (Gamepad)";
+                player1StatusText.color = Color.green;
+            }
             else if (CoopGameManager.Instance.player1KeyboardScheme == KeyboardControlScheme.WASD)
+            {
                 player1StatusText.text = "Player 1: Joined (WASD)";
+                player1StatusText.color = Color.green;
+            }
         }
         else
         {
             player1StatusText.text = "Player 1: Not Joined";
+            player1StatusText.color = Color.red;
         }
         if (CoopGameManager.Instance.Player2Joined)
         {
             if (CoopGameManager.Instance.player2Gamepad != null)
+            {
                 player2StatusText.text = "Player 2: Joined (Gamepad)";
+                player2StatusText.color = Color.green;
+            }
             else if (CoopGameManager.Instance.player2KeyboardScheme == KeyboardControlScheme.Arrows)
+            {
                 player2StatusText.text = "Player 2: Joined (Arrows)";
+                player2StatusText.color = Color.green;
+            }
         }
-        else
-        {
-            player2StatusText.text = "Player 2: Not Joined";
-        }
+            else
+            {
+                player2StatusText.text = "Player 2: Not Joined";
+                player2StatusText.color = Color.red;
+            }
         if (playButton != null)
         {
             playButton.interactable = (CoopGameManager.Instance.Player1Joined && CoopGameManager.Instance.Player2Joined);
