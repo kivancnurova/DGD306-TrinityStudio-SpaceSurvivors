@@ -34,12 +34,12 @@ public class UpgradeManager : MonoBehaviour
     public GameObject upgradePanel;
 
     [Header("Upgrade Slots")]
-    public GameObject[] upgradeSlots; // Upgrade1, Upgrade2, Upgrade3 gibi GameObjectler
-    public TMP_Text[] upgradeNames; // UpgradeName1, UpgradeName2, UpgradeName3
-    public Image[] upgradeImages; // UpgradeImage1, UpgradeImage2, UpgradeImage3
-    public TMP_Text[] upgradeDescriptions; // UpgradeDescription1, UpgradeDescription2, UpgradeDescription3
-    public TMP_Text[] upgradeCosts; // UpgradeCost1, UpgradeCost2, UpgradeCost3
-    public Button[] upgradeButtons; // UpgradeButton1, UpgradeButton2, UpgradeButton3
+    public GameObject[] upgradeSlots;
+    public TMP_Text[] upgradeNames;
+    public Image[] upgradeImages;
+    public TMP_Text[] upgradeDescriptions;
+    public TMP_Text[] upgradeCosts;
+    public Button[] upgradeButtons;
 
 
     private void Awake()
@@ -139,13 +139,11 @@ public class UpgradeManager : MonoBehaviour
         {
             UpgradeOption upgrade = randomUpgrades[i];
 
-            // Update UI elements for each slot
             upgradeNames[i].text = upgrade.name;
             upgradeImages[i].sprite = upgrade.icon;
             upgradeDescriptions[i].text = upgrade.description;
             upgradeCosts[i].text = "Cost: " + upgrade.cost.ToString() + "Score";
 
-            // Set button behavior
             Button button = upgradeButtons[i];
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(() =>

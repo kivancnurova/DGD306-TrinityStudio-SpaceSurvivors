@@ -52,7 +52,6 @@ public partial class CoopGameManager : MonoBehaviour
             Instance = null;
     }
 
-    // Join metodları
     public bool AssignPlayer1Gamepad(Gamepad gp)
     {
         if (Player1Joined) return false;
@@ -81,7 +80,6 @@ public partial class CoopGameManager : MonoBehaviour
         return true;
     }
 
-    // Eğer isterseniz join iptal (leave) fonksiyonları da ekleyebilirsiniz:
     public void UnassignPlayer1()
     {
         player1Gamepad = null;

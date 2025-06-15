@@ -10,13 +10,11 @@ public class HealthBarController : MonoBehaviour
 
     private PlayerStats playerStats;
 
-    // Orijinal transform ölçeği ve ilk max health
     private Vector3 originalScale;
     private float baseMaxHealth;
 
     void Awake()
     {
-        // PlayerStats'i bul
         if (playerStats == null)
         {
             playerStats = FindObjectOfType<PlayerStats>();

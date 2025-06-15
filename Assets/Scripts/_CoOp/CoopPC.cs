@@ -10,8 +10,7 @@ public class CoopPC : MonoBehaviour
     [SerializeField] private PlayerIndex playerIndex = PlayerIndex.One;
     [SerializeField] private float speed = 5f;
 
-    // Hareket sınırları
-    private Rect boundsP1 = new Rect(-7f, -3.5f, 14f, 2f);   //  x y w h
+    private Rect boundsP1 = new Rect(-7f, -3.5f, 14f, 2f);
     private Rect boundsP2 = new Rect(-7f,  1.5f, 14f, 2f);
 
     // Atanmış cihaz/scheme
@@ -22,15 +21,14 @@ public class CoopPC : MonoBehaviour
 
     public void Initialize(Gamepad gpad, KeyboardControlScheme scheme)
     {
-        pad       = gpad;          // null olabilir
-        keyScheme = scheme;        // None / WASD / Arrows
+        pad       = gpad;
+        keyScheme = scheme;
     }
 
     private void Awake() => rb = GetComponent<Rigidbody2D>();
 
     private void Start()
     {
-        // Sahneye girerken kendimizi CoopGameManager’dan otomatik doldurabiliriz
         var gm = CoopGameManager.Instance;
         if (gm != null)
         {
@@ -47,11 +45,9 @@ public class CoopPC : MonoBehaviour
 
     private Vector2 ReadInput()
     {
-        // ❶ Gamepad varsa doğrudan onun d-pad’ini (veya sol çubuğunu) kullan
         if (pad != null)
-            return pad.dpad.ReadValue();   // arcade’de d-pad varsa yeter
+            return pad.dpad.ReadValue();
 
-        // ❷ Klavyede hangi şema atanmışsa ona göre oku
         var kb = Keyboard.current;
         if (kb == null) return Vector2.zero;
 
@@ -77,7 +73,6 @@ public class CoopPC : MonoBehaviour
         Vector2 delta = dir.normalized * speed * Time.fixedDeltaTime;
         Vector2 target = rb.position + delta;
 
-        // Kendi kutumuza sıkıştır
         Rect r = (playerIndex == PlayerIndex.One) ? boundsP1 : boundsP2;
         target.x = Mathf.Clamp(target.x, r.xMin, r.xMax);
         target.y = Mathf.Clamp(target.y, r.yMin, r.yMax);
