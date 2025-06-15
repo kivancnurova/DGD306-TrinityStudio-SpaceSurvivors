@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9fdedcb0d65e5148be1db8de1e2117e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  damage: 10
+  speed: 8
+  damage: 15
   lifeTime: 2
 --- !u!70 &7299867878169352915
 CapsuleCollider2D:

@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
-  damage: 20
+  damage: 25
   lifeTime: 3
 --- !u!1001 &6651797562904445111
 PrefabInstance:

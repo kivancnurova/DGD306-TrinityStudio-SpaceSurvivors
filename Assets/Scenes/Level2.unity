@@ -1234,7 +1234,8 @@ MonoBehaviour:
   - {fileID: 1546239658}
   - {fileID: 1773453186}
   level2Panel: {fileID: 0}
-  level3Panel: {fileID: 0}
+  level3Panel: {fileID: 1586293568}
+  NextLevelButton: {fileID: 581161944}
 --- !u!1 &379692794
 GameObject:
   m_ObjectHideFlags: 0
@@ -2024,9 +2025,9 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0, g: 0.57254905, b: 0, a: 1}
+    m_PressedColor: {r: 0, g: 0.57254905, b: 0, a: 1}
+    m_SelectedColor: {r: 0, g: 0.57254905, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2048,7 +2049,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1275512338}
         m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
-        m_MethodName: NextLevel
+        m_MethodName: Level3Load
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2974,15 +2975,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5798254977330119253, guid: 4a43355f0729b45748e5932386bd3a66, type: 3}
       propertyPath: playerMaxHealth
-      value: 1000
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: -5798254977330119253, guid: 4a43355f0729b45748e5932386bd3a66, type: 3}
       propertyPath: playerAttackDamage
-      value: 5
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: -5798254977330119253, guid: 4a43355f0729b45748e5932386bd3a66, type: 3}
       propertyPath: playerCurrentHealth
-      value: 1000
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 2943916322209312521, guid: 4a43355f0729b45748e5932386bd3a66, type: 3}
       propertyPath: scoreText

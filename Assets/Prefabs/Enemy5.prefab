@@ -48,14 +48,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 683863853d8841e4f901969ab26c3655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 45
+  maxHealth: 90
+  health: 90
+  scoreWorth: 50
   bulletPrefab: {fileID: 8591429187568804703, guid: 5640e5aad0110bf4196672e14e8ca4b5, type: 3}
   firePoint1: {fileID: 3657050360128030940}
   firePoint2: {fileID: 0}
   firePoint3: {fileID: 0}
   firePoint4: {fileID: 0}
-  fireRate: 1.5
-  scoreWorth: 50
+  fireRate: 1.2
+  healthBarFill: {fileID: 0}
 --- !u!50 &1060428025744560276
 Rigidbody2D:
   serializedVersion: 4

@@ -241,12 +241,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  playerMaxHealth: 100
-  playerCurrentHealth: 100
-  playerAttackDamage: 10
-  playerMovementSpeed: 5
-  playerBulletSpeed: 5
-  playerFireRate: 1.2
+  playerMaxHealth: 300
+  playerCurrentHealth: 300
+  playerAttackDamage: 25
+  playerMovementSpeed: 6
+  playerBulletSpeed: 6
+  playerFireRate: 1
 --- !u!114 &2943916322209312521
 MonoBehaviour:
   m_ObjectHideFlags: 0

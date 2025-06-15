@@ -31,9 +31,15 @@ public class MainMenuController : MonoBehaviour
     }
 
 
-    public void NextLevel()
+    public void Level2Load()
     {
         SceneManager.LoadScene("Level2");
+        Time.timeScale = 1f;
+    }
+
+    public void Level3Load()
+    {
+        SceneManager.LoadScene("Level3");
         Time.timeScale = 1f;
     }
 

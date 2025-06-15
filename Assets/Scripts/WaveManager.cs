@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.EventSystems;
 public class WaveManager : MonoBehaviour
 {
     public List<GameObject> waves = new List<GameObject>();
     public GameObject level2Panel;
     public GameObject level3Panel;
+    public GameObject NextLevelButton;
 
     private List<EnemyGroupController> controllers = new List<EnemyGroupController>();
     private int currentIndex = 0;
@@ -55,6 +56,7 @@ public class WaveManager : MonoBehaviour
                 {
                     Time.timeScale = 0f;
                     level2Panel.SetActive(true);
+                    EventSystem.current.SetSelectedGameObject(NextLevelButton);
                 }
 
             }
@@ -64,7 +66,8 @@ public class WaveManager : MonoBehaviour
                 {
                     Time.timeScale = 0f;
                     level3Panel.SetActive(true);
-                }        
+                    EventSystem.current.SetSelectedGameObject(NextLevelButton);
+                }
             }
             else if (sceneName == "Level3")
             {

@@ -154,7 +154,7 @@ MonoBehaviour:
   firePoint2: {fileID: 2822509397291712982}
   firePoint3: {fileID: 9029363043988376811}
   firePoint4: {fileID: 8019756835773717724}
-  fireRate: 2
+  fireRate: 1.3
   healthBarFill: {fileID: 1266165960915927203}
 --- !u!50 &8257135272406813486
 Rigidbody2D:

@@ -225,15 +225,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 683863853d8841e4f901969ab26c3655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 300
-  health: 300
-  scoreWorth: 50
+  maxHealth: 400
+  health: 400
+  scoreWorth: 400
   bulletPrefab: {fileID: 4328558659638032358, guid: d09b12acc7bc7d345a29bb522b22700b, type: 3}
   firePoint1: {fileID: 2332867885004605552}
   firePoint2: {fileID: 6623943554698789243}
   firePoint3: {fileID: 5154992015533702323}
   firePoint4: {fileID: 4177734290365275733}
-  fireRate: 0.4
+  fireRate: 1
   healthBarFill: {fileID: 4799414237822348158}
 --- !u!60 &3771397488289215661
 PolygonCollider2D:
