@@ -21,7 +21,7 @@ public class HealthBarController : MonoBehaviour
         }
 
         originalScale = transform.localScale;
-        baseMaxHealth = 10;
+        baseMaxHealth = playerStats.playerMaxHealth;
     }
 
     void Start()
