@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class Bullet : MonoBehaviour
 {
     public int damage = 1;
@@ -11,9 +10,19 @@ public class Bullet : MonoBehaviour
     [HideInInspector]
     public string ownerTag;
 
-    private void Start()
+    private float spawnTime;
+
+    private void OnEnable()
     {
-        Destroy(gameObject, lifetime);
+        spawnTime = Time.time;
+    }
+
+    private void Update()
+    {
+        if (Time.time - spawnTime >= lifetime)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -25,8 +34,10 @@ public class Bullet : MonoBehaviour
         if (health != null)
         {
             health.TakeDamage(damage);
+            // Mermiyi yok et
             Destroy(gameObject);
             return;
         }
+
     }
 }

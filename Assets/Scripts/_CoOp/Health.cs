@@ -6,7 +6,8 @@ using UnityEngine.Events;
 public class Health : MonoBehaviour
 {
     public int maxHealth = 5;
-    public int currentHealth;
+    private int currentHealth;
+    private bool isDead = false;
 
     public UnityEvent<int, int> onHealthChanged;
     public UnityEvent onDeath;
@@ -14,22 +15,32 @@ public class Health : MonoBehaviour
     private void Awake()
     {
         currentHealth = maxHealth;
+        isDead = false;
     }
 
     public void TakeDamage(int amount)
     {
+        if (isDead) return;
+
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         onHealthChanged?.Invoke(currentHealth, maxHealth);
         if (currentHealth <= 0)
+        {
             Die();
+        }
     }
 
-    public void Die()
+    private void Die()
     {
+        if (isDead) return;
+        isDead = true;
+
+        if (EndGameController.Instance != null)
+        {
+            EndGameController.Instance.OnPlayerKilled(gameObject.tag);
+        }
         onDeath?.Invoke();
         Destroy(gameObject);
     }
 }
-
-
