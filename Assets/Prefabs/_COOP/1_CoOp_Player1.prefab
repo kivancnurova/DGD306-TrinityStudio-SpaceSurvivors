@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5204342355542063855}
-  - component: {fileID: 414982574663018994}
+  - component: {fileID: 5663446829089028309}
   m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
@@ -117,7 +117,7 @@ Transform:
   - {fileID: 4575649545731425369}
   m_Father: {fileID: 3506545732611682849}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &414982574663018994
+--- !u!114 &5663446829089028309
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4025483130501814724}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 410f678bda59c18439545bc68fcfa35d, type: 3}
+  m_Script: {fileID: 11500000, guid: d9b315d88e00caf498ea8da8bae658c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   barSprite: {fileID: 3680481407668613072}
@@ -139,13 +139,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3506545732611682849}
-  - component: {fileID: -5798254977330119253}
   - component: {fileID: 25597819587636258}
   - component: {fileID: 6535880352531821424}
   - component: {fileID: 7476985123285955659}
+  - component: {fileID: -4565692641366142434}
+  - component: {fileID: -4056948927508118600}
   m_Layer: 0
   m_Name: 1_CoOp_Player1
-  m_TagString: Player
+  m_TagString: CoOpP1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,25 +168,6 @@ Transform:
   - {fileID: 5204342355542063855}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-5798254977330119253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4662578180584870944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8fd236d8f50c7f4d942dadba6eeb3c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  score: 0
-  playerMaxHealth: 100
-  playerCurrentHealth: 100
-  playerAttackDamage: 10
-  playerMovementSpeed: 5
-  playerBulletSpeed: 5
-  playerFireRate: 1.2
 --- !u!60 &25597819587636258
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -280,6 +262,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerIndex: 1
   speed: 5
+--- !u!114 &-4565692641366142434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4662578180584870944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c7c3bd6bd4c3f94b9dba3a3c69ce926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 4328558659638032358, guid: f204292a2245ec54e926c0adb1a4108d, type: 3}
+  bulletSpeed: 10
+  firePoints:
+  - {fileID: 7722250971263921343}
+  fireInterval: 1.2
+  initialDelay: 0
+--- !u!114 &-4056948927508118600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4662578180584870944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97a0d02c47ab518489800b99e35dce64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  currentHealth: 0
+  onHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4902099534128278539
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,5 +404,10 @@ PrefabInstance:
 --- !u!4 &3342882803234240907 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4996052665547380358, guid: 9cd6a4f4ec0f81e41b94d8f92159b5a4, type: 3}
+  m_PrefabInstance: {fileID: 7724171849433722637}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7722250971263921343 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7660329673180082, guid: 9cd6a4f4ec0f81e41b94d8f92159b5a4, type: 3}
   m_PrefabInstance: {fileID: 7724171849433722637}
   m_PrefabAsset: {fileID: 0}

@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBarController : MonoBehaviour
+public class CoOpHealthBarController : MonoBehaviour
 {
     [Header("Assign the SpriteRenderer on your bar sprite")]
     [SerializeField] private SpriteRenderer barSprite;
 
-    private PlayerStats playerStats;
+    private Health healthscript;
 
     private Vector3 originalScale;
     private float baseMaxHealth;
 
     void Awake()
     {
-        if (playerStats == null)
+        if (healthscript == null)
         {
-            playerStats = FindObjectOfType<PlayerStats>();
+            healthscript = FindObjectOfType<Health>();
         }
 
         originalScale = transform.localScale;
@@ -36,8 +36,8 @@ public class HealthBarController : MonoBehaviour
 
     public void UpdateBar()
     {
-        float maxH = playerStats.playerMaxHealth;
-        float curH = playerStats.playerCurrentHealth;
+        float maxH =  healthscript.maxHealth;
+        float curH = healthscript.currentHealth;
 
         float fullLengthFactor = maxH / baseMaxHealth;
         Vector3 fullScale = new Vector3(originalScale.x * fullLengthFactor,
