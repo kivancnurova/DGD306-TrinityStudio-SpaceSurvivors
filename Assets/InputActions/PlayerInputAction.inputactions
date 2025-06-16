@@ -13,6 +13,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Open In-Game Menu",
+                    "type": "Button",
+                    "id": "68bf35c0-4e58-40a7-921a-402bb71bc052",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -81,6 +90,17 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "de8a1ea2-85ff-4e73-be5c-d6fa7903c7f9",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Open In-Game Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

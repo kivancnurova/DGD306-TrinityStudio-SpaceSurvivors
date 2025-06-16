@@ -3850,6 +3850,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1275512339}
   - component: {fileID: 1275512338}
+  - component: {fileID: 1275512340}
   m_Layer: 0
   m_Name: MenuController
   m_TagString: Untagged
@@ -3869,7 +3870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e222e16995a41436ca13d332217098bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstOption: {fileID: 0}
+  firstOption: {fileID: 1399438056}
 --- !u!4 &1275512339
 Transform:
   m_ObjectHideFlags: 0
@@ -3885,6 +3886,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1275512340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275512337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 267d996e6b46a4f4babb7bc02462f378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openMenuActionRef: {fileID: 2685105628420260232, guid: 91970c23094729243a146168770ddab1, type: 3}
+  menuPanel: {fileID: 607180612}
 --- !u!1 &1280562336
 GameObject:
   m_ObjectHideFlags: 0
@@ -4222,8 +4237,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1275512338}
-        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
+      - m_Target: {fileID: 1275512340}
+        m_TargetAssemblyTypeName: MenuOpener, Assembly-CSharp
         m_MethodName: ResumeGame
         m_Mode: 1
         m_Arguments:
