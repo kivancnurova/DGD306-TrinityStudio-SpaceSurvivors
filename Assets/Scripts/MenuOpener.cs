@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
+
 
 public class MenuOpener : MonoBehaviour
 {
     public InputActionReference openMenuActionRef;
 
     public GameObject menuPanel;
+    public GameObject firstOption;
 
     private void OnEnable()
     {
@@ -38,6 +41,8 @@ public class MenuOpener : MonoBehaviour
         {
             Time.timeScale = 0f;
             menuPanel.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(firstOption);
+
         }
         else
         {

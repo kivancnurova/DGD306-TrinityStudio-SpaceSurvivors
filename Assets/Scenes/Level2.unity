@@ -3673,6 +3673,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openMenuActionRef: {fileID: 2685105628420260232, guid: 91970c23094729243a146168770ddab1, type: 3}
   menuPanel: {fileID: 2017601999}
+  firstOption: {fileID: 1546977646}
 --- !u!1 &1346459796
 GameObject:
   m_ObjectHideFlags: 0
