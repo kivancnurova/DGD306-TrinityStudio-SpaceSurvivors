@@ -11,17 +11,16 @@ public class CoopPC : MonoBehaviour
     [SerializeField] private float speed = 5f;
 
     private Rect boundsP1 = new Rect(-7f, -3.5f, 14f, 2f);
-    private Rect boundsP2 = new Rect(-7f,  1.5f, 14f, 2f);
+    private Rect boundsP2 = new Rect(-7f, 1.5f, 14f, 2f);
 
-    // Atanmış cihaz/scheme
-    private Gamepad   pad;
+    private Gamepad pad;
     private KeyboardControlScheme keyScheme;
 
     private Rigidbody2D rb;
 
     public void Initialize(Gamepad gpad, KeyboardControlScheme scheme)
     {
-        pad       = gpad;
+        pad = gpad;
         keyScheme = scheme;
     }
 
@@ -32,7 +31,7 @@ public class CoopPC : MonoBehaviour
         var gm = CoopGameManager.Instance;
         if (gm != null)
         {
-            pad       = gm.GetDevice(playerIndex) as Gamepad;
+            pad = gm.GetDevice(playerIndex) as Gamepad;
             keyScheme = gm.GetScheme(playerIndex);
         }
     }
@@ -46,7 +45,11 @@ public class CoopPC : MonoBehaviour
     private Vector2 ReadInput()
     {
         if (pad != null)
+        {
+            Vector2 ls = pad.leftStick.ReadValue();
+            if (ls.sqrMagnitude > 0.01f) return ls;
             return pad.dpad.ReadValue();
+        }
 
         var kb = Keyboard.current;
         if (kb == null) return Vector2.zero;
@@ -60,7 +63,7 @@ public class CoopPC : MonoBehaviour
             case KeyboardControlScheme.Arrows:
                 return new Vector2(
                     Bool(kb.rightArrowKey) - Bool(kb.leftArrowKey),
-                    Bool(kb.upArrowKey)    - Bool(kb.downArrowKey));
+                    Bool(kb.upArrowKey) - Bool(kb.downArrowKey));
             default:
                 return Vector2.zero;
         }
