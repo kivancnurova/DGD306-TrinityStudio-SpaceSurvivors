@@ -93,6 +93,17 @@
                 },
                 {
                     "name": "",
+                    "id": "5b462f5c-eefc-4c88-a844-737efba61525",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "de8a1ea2-85ff-4e73-be5c-d6fa7903c7f9",
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "Hold",
